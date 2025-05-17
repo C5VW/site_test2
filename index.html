@@ -9,128 +9,197 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #000;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth; /* Smooth scrolling */
     }
+
+    /* Main container with padding */
+    .main-container {
+      width: 80%;
+      max-width: 900px;
+      padding-top: 30px;
+    }
+
     /* Header section for images */
     .image-header {
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
       align-items: center;
+      gap: 20px;
       width: 100%;
-      height: 50vh; /* Half of the screen height */
-      background-color: #e0e0e0;
-    }
-    .image-header img {
-      width: 15%;
-      height: auto;
-      border-radius: 8px;
+      padding: 30px 0;
+      background-color: #333;
     }
 
-    /* Scrollable section for more images */
+    .image-header img {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s forwards;
+    }
+
+    /* Add animation for image appearance */
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scrollable images section */
     .scrollable-images {
       display: flex;
-      overflow-x: scroll;
-      padding: 20px;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 20px 0;
       width: 100%;
-      background-color: #ffffff;
+      background-color: #111;
     }
+
     .scrollable-images img {
-      margin-right: 10px;
-      width: 20%;
-      height: auto;
-      border-radius: 8px;
+      height: 150px;
+      width: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .scrollable-images img:hover {
+      transform: scale(1.1);
     }
 
     /* Contact table section */
     .contact-table {
-      margin-top: 30px;
-      width: 80%;
-      background-color: #fff;
+      margin-top: 40px;
+      width: 100%;
+      background-color: #222;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
     }
+
     th, td {
       padding: 12px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-    th {
-      background-color: #f2f2f2;
+      border-bottom: 1px solid #444;
     }
 
-    /* Footer (optional, for GitHub Pages link) */
+    th {
+      background-color: #333;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       margin-top: 50px;
       padding: 10px;
-      background-color: #333;
+      background-color: #000;
       color: #fff;
       width: 100%;
     }
+
+    /* Make the page more responsive */
+    @media (max-width: 768px) {
+      .image-header {
+        padding: 20px 0;
+      }
+
+      .image-header img {
+        width: 90%;
+      }
+
+      .scrollable-images img {
+        height: 130px;
+        width: 170px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-header {
+        padding: 20px 0;
+      }
+
+      .image-header img {
+        width: 100%;
+      }
+
+      .scrollable-images img {
+        height: 100px;
+        width: 140px;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Image Header -->
-  <div class="image-header">
-    <img src="image1.jpg" alt="Image 1">
-    <img src="image2.jpg" alt="Image 2">
-    <img src="image3.jpg" alt="Image 3">
-    <img src="image4.jpg" alt="Image 4">
-    <img src="image5.jpg" alt="Image 5">
-    <img src="image6.jpg" alt="Image 6">
-  </div>
+  <div class="main-container">
+    <!-- Image Header -->
+    <div class="image-header">
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2">
+      <img src="image3.jpg" alt="Image 3">
+    </div>
 
-  <!-- Scrollable Images -->
-  <div class="scrollable-images">
-    <img src="image7.jpg" alt="Image 7">
-    <img src="image8.jpg" alt="Image 8">
-    <img src="image9.jpg" alt="Image 9">
-    <img src="image10.jpg" alt="Image 10">
-  </div>
+    <!-- Scrollable Images -->
+    <div class="scrollable-images">
+      <img src="image4.jpg" alt="Image 4">
+      <img src="image5.jpg" alt="Image 5">
+      <img src="image6.jpg" alt="Image 6">
+      <img src="image7.jpg" alt="Image 7">
+    </div>
 
-  <!-- Contact Table -->
-  <div class="contact-table">
-    <h2>Contact Information</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>johndoe@example.com</td>
-          <td>(123) 456-7890</td>
-        </tr>
-        <tr>
-          <td>Jane Smith</td>
-          <td>janesmith@example.com</td>
-          <td>(987) 654-3210</td>
-        </tr>
-        <tr>
-          <td>Alex Johnson</td>
-          <td>alexjohnson@example.com</td>
-          <td>(555) 123-4567</td>
-        </tr>
-        <tr>
-          <td>Emily Brown</td>
-          <td>emilybrown@example.com</td>
-          <td>(444) 789-0123</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Contact Table -->
+    <div class="contact-table">
+      <h2>Contact Information</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>(123) 456-7890</td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>janesmith@example.com</td>
+            <td>(987) 654-3210</td>
+          </tr>
+          <tr>
+            <td>Alex Johnson</td>
+            <td>alexjohnson@example.com</td>
+            <td>(555) 123-4567</td>
+          </tr>
+          <tr>
+            <td>Emily Brown</td>
+            <td>emilybrown@example.com</td>
+            <td>(444) 789-0123</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Footer -->
