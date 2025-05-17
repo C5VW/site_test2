@@ -15,7 +15,7 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
-      scroll-behavior: smooth; /* Smooth scrolling */
+      scroll-behavior: smooth;
     }
 
     /* Main container with padding */
@@ -43,6 +43,7 @@
       opacity: 0;
       transform: translateY(50px);
       animation: slideUp 1s forwards;
+      cursor: pointer;
     }
 
     /* Add animation for image appearance */
@@ -73,6 +74,7 @@
       object-fit: cover;
       border-radius: 10px;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .scrollable-images img:hover {
@@ -81,24 +83,25 @@
 
     /* Long gap section between images and contact table */
     .long-gap {
-      height: 500px; /* Increased height for more space */
+      height: 500px; 
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 30px; /* Space between large images */
+      gap: 30px;
     }
 
     /* Large images section in the long gap */
     .long-gap img {
-      width: 600px; /* 3 times the size of original images */
+      width: 600px; 
       height: 800px;
       object-fit: cover;
       border-radius: 10px;
       opacity: 0;
       transform: translateY(50px);
       animation: slideUp 1s forwards;
+      cursor: pointer;
     }
 
     /* Contact table section */
@@ -136,6 +139,64 @@
       width: 100%;
     }
 
+    /* Modal styles */
+    /* The Modal (background) */
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      transition: opacity 0.5s ease;
+    }
+
+    /* Modal content (the image and description) */
+    .modal-content {
+      margin: 5% auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      max-width: 1000px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .modal-content img {
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .modal-description {
+      color: #000;
+      padding-left: 20px;
+      width: 40%;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     /* Make the page more responsive */
     @media (max-width: 768px) {
       .image-header {
@@ -154,6 +215,20 @@
       .long-gap img {
         width: 400px;
         height: 600px;
+      }
+
+      .modal-content {
+        flex-direction: column;
+      }
+
+      .modal-content img {
+        width: 100%;
+      }
+
+      .modal-description {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 10px;
       }
     }
 
@@ -175,6 +250,19 @@
         width: 300px;
         height: 450px;
       }
+
+      .modal-content {
+        flex-direction: column;
+      }
+
+      .modal-content img {
+        width: 100%;
+      }
+
+      .modal-description {
+        width: 100%;
+        padding-left: 0;
+      }
     }
 
   </style>
@@ -184,25 +272,25 @@
   <div class="main-container">
     <!-- Image Header -->
     <div class="image-header">
-      <img src="image1.jpg" alt="Image 1">
-      <img src="image2.jpg" alt="Image 2">
-      <img src="image3.jpg" alt="Image 3">
+      <img src="image1.jpg" alt="Image 1" onclick="openModal('image1.jpg', 'Description for Image 1')">
+      <img src="image2.jpg" alt="Image 2" onclick="openModal('image2.jpg', 'Description for Image 2')">
+      <img src="image3.jpg" alt="Image 3" onclick="openModal('image3.jpg', 'Description for Image 3')">
     </div>
 
     <!-- Scrollable Images -->
     <div class="scrollable-images">
-      <img src="image4.jpg" alt="Image 4">
-      <img src="image5.jpg" alt="Image 5">
-      <img src="image6.jpg" alt="Image 6">
-      <img src="image7.jpg" alt="Image 7">
+      <img src="image4.jpg" alt="Image 4" onclick="openModal('image4.jpg', 'Description for Image 4')">
+      <img src="image5.jpg" alt="Image 5" onclick="openModal('image5.jpg', 'Description for Image 5')">
+      <img src="image6.jpg" alt="Image 6" onclick="openModal('image6.jpg', 'Description for Image 6')">
+      <img src="image7.jpg" alt="Image 7" onclick="openModal('image7.jpg', 'Description for Image 7')">
     </div>
 
     <!-- Long Gap Section with Large Images -->
     <div class="long-gap">
-      <img src="large-image1.jpg" alt="Large Image 1">
-      <img src="large-image2.jpg" alt="Large Image 2">
-      <img src="large-image3.jpg" alt="Large Image 3">
-      <img src="large-image4.jpg" alt="Large Image 4">
+      <img src="large-image1.jpg" alt="Large Image 1" onclick="openModal('large-image1.jpg', 'Description for Large Image 1')">
+      <img src="large-image2.jpg" alt="Large Image 2" onclick="openModal('large-image2.jpg', 'Description for Large Image 2')">
+      <img src="large-image3.jpg" alt="Large Image 3" onclick="openModal('large-image3.jpg', 'Description for Large Image 3')">
+      <img src="large-image4.jpg" alt="Large Image 4" onclick="openModal('large-image4.jpg', 'Description for Large Image 4')">
     </div>
 
     <!-- Contact Table -->
@@ -242,10 +330,31 @@
     </div>
   </div>
 
+  <!-- Modal for images -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+      <div class="modal-description" id="modalDescription"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
-    <p>&copy; Huge W Inc. s</p>
+    <p>&copy; 2025 Your Website - Hosted on GitHub Pages</p>
   </footer>
+
+  <script>
+    function openModal(imageSrc, description) {
+      document.getElementById("myModal").style.display = "block";
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("modalDescription").innerText = description;
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
