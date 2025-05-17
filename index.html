@@ -66,7 +66,8 @@
 
     .scrollable-images img {
       height: 150px;
-      width: 200px;
+      width: auto;
+      max-width: 200px;
       object-fit: cover;
       border-radius: 10px;
       transition: transform 0.3s ease;
@@ -89,8 +90,8 @@
 
     .long-gap img {
       width: 600px; 
-      height: 800px;
-      object-fit: cover;
+      height: auto; /* Ensure aspect ratio is maintained */
+      object-fit: contain;
       border-radius: 10px;
       opacity: 0;
       transform: translateY(50px);
@@ -157,10 +158,10 @@
     }
 
     .modal-content img {
-      width: 50%; /* Adjust the image size */
+      width: 60%; /* Adjust the image size */
       height: auto;
       border-radius: 10px;
-      object-fit: cover;
+      object-fit: contain;
       margin-right: 20px;
       transform: translateX(-20px); /* Off-center image slightly to the left */
     }
@@ -223,7 +224,7 @@
 
     <!-- Scrollable Images -->
     <div class="scrollable-images">
-      <img src="image4.jpg" alt="Image 4" onclick="openModal('angel_ref.jpg', 'Description for Image 4')">
+      <img src="image4.jpg" alt="Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg', 'Description for Image 4')">
       <img src="image5.jpg" alt="Image 5" onclick="openModal('image5.jpg', 'Description for Image 5')">
       <img src="image6.jpg" alt="Image 6" onclick="openModal('image6.jpg', 'Description for Image 6')">
       <img src="image7.jpg" alt="Image 7" onclick="openModal('image7.jpg', 'Description for Image 7')">
@@ -231,10 +232,7 @@
 
     <!-- Long Gap Section with Large Images -->
     <div class="long-gap">
-      <img src="large-image1.jpg" alt="Large Image 1" onclick="openModal('large-image1.jpg', 'Description for Large Image 1')">
-      <img src="large-image2.jpg" alt="Large Image 2" onclick="openModal('large-image2.jpg', 'Description for Large Image 2')">
-      <img src="large-image3.jpg" alt="Large Image 3" onclick="openModal('large-image3.jpg', 'Description for Large Image 3')">
-      <img src="large-image4.jpg" alt="Large Image 4" onclick="openModal('large-image4.jpg', 'Description for Large Image 4')">
+      <img src="https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg" alt="Large Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg', 'Description for Large Image 4')">
     </div>
 
     <!-- Contact Table -->
@@ -285,14 +283,14 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; Huge W Inc.</p>
+    <p>&copy; 2025 Your Website - Hosted on GitHub Pages</p>
   </footer>
 
   <script>
     function openModal(imageSrc, description) {
       document.getElementById("myModal").style.display = "block";
       document.getElementById("modalImage").src = imageSrc;
-      document.getElementById("modalDescription").innerText = description;
+      document.getElementById("modalDescription").innerHTML = description;
     }
 
     function closeModal() {
