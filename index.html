@@ -57,18 +57,18 @@
 
     .scrollable-images {
       display: flex;
-      overflow-x: auto;
+      flex-direction: column;
       gap: 10px;
       padding: 20px 0;
       width: 100%;
       background-color: #111;
-      justify-content: flex-start;
+      align-items: flex-start;
     }
 
-    /* Scrollable images that are small icons */
+    /* Scrollable images that are small icons, vertically aligned */
     .scrollable-images img {
-      height: 50px;
-      max-width: 80px;
+      height: 50px; /* Small icon size */
+      max-width: 80px; /* Set max-width for consistency */
       width: auto;
       object-fit: cover;
       border-radius: 10px;
@@ -161,13 +161,13 @@
     }
 
     .modal-content img {
-      max-width: 600px; /* This will set the max width of the modal image */
+      max-width: 600px;
       width: 100%;
       height: auto;
       border-radius: 10px;
       object-fit: contain;
       margin-right: 20px;
-      transform: translateX(-20px); /* Off-center image slightly to the left */
+      transform: translateX(-20px);
     }
 
     .modal-description {
@@ -207,7 +207,7 @@
       <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image3.jpg" alt="Image 3" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image3.jpg', 'Description for Image 3')">
     </div>
 
-    <!-- Scrollable Images -->
+    <!-- Scrollable Images (Vertically aligned) -->
     <div class="scrollable-images">
       <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image4.jpg" alt="Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image4.jpg', 'Description for Image 4')">
       <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg" alt="Angel Image" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg', 'Description for Angel Image')" style="height: 50px; max-width: 80px;">
