@@ -17,26 +17,125 @@
       overflow-x: hidden;
     }
 
-    .image-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+    .main-container {
+      width: 90%;
+      max-width: 1000px;
+      padding-top: 30px;
+      margin: 0 auto;
     }
 
-    .image-container img {
-      width: 100px; /* Small size by default */
-      height: 100px;
+    .image-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      padding: 30px 0;
+      background-color: #333;
+    }
+
+    .image-header img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s forwards;
+      cursor: pointer;
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scrollable-images {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 20px 0;
+      width: 100%;
+      background-color: #111;
+      justify-content: flex-start;
+    }
+
+    /* Scrollable images that are small icons */
+    .scrollable-images img {
+      height: 50px;
+      max-width: 80px;
+      width: auto;
       object-fit: cover;
       border-radius: 10px;
-      cursor: pointer;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
-    .image-container img:hover {
+    .scrollable-images img:hover {
       transform: scale(1.1);
     }
 
-    /* Modal Styles */
+    .long-gap {
+      height: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .long-gap img {
+      width: 80%;
+      max-width: 600px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s forwards;
+      cursor: pointer;
+    }
+
+    .contact-table {
+      margin-top: 40px;
+      width: 100%;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+    }
+
     .modal {
       display: none;
       position: fixed;
@@ -47,25 +146,29 @@
       height: 100%;
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.9);
+      transition: opacity 0.5s ease;
     }
 
     .modal-content {
       margin: 5% auto;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       width: 80%;
-      max-width: 800px;
+      max-width: 1000px;
       background-color: #fff;
       padding: 20px;
       border-radius: 10px;
     }
 
     .modal-content img {
-      max-width: 100%;
-      max-height: 600px;
+      max-width: 600px; /* This will set the max width of the modal image */
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
       object-fit: contain;
       margin-right: 20px;
+      transform: translateX(-20px); /* Off-center image slightly to the left */
     }
 
     .modal-description {
@@ -73,7 +176,9 @@
       background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
       border-radius: 10px;
-      width: 30%;
+      width: 40%;
+      height: 100%;
+      overflow-y: auto;
     }
 
     .close {
@@ -84,62 +189,145 @@
       font-size: 24px;
       font-weight: bold;
       cursor: pointer;
+      transition: color 0.3s ease;
     }
 
-    .close:hover {
+    .close:hover,
+    .close:focus {
       color: #bbb;
     }
 
     /* Mobile responsiveness */
     @media (max-width: 768px) {
-      .image-container img {
-        width: 80px;
-        height: 80px;
+      body {
+        padding: 0;
+      }
+
+      .main-container {
+        width: 100%;
+      }
+
+      .image-header img {
+        max-width: 90%;
+      }
+
+      .scrollable-images img {
+        height: 40px;
+        max-width: 60px;
+      }
+
+      .long-gap img {
+        width: 90%;
+        max-width: 500px;
       }
 
       .modal-content {
         flex-direction: column;
+        align-items: center;
       }
 
       .modal-content img {
-        max-width: 100%;
-        margin-bottom: 20px;
+        width: 80%;
+        margin-right: 0;
+        transform: translateX(0);
       }
 
       .modal-description {
         width: 100%;
+        margin-top: 10px;
+      }
+
+      .contact-table table {
+        font-size: 14px;
       }
     }
+
   </style>
 </head>
 <body>
 
-  <div class="image-container">
-    <!-- Click to open large image -->
-    <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg" alt="Angel Image" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg', 'Angel Image Description')">
+  <div class="main-container">
+    <!-- Image Header -->
+    <div class="image-header">
+      <img src="image1.jpg" alt="Image 1" onclick="openModal('image1.jpg', 'Description for Image 1')">
+      <img src="image2.jpg" alt="Image 2" onclick="openModal('image2.jpg', 'Description for Image 2')">
+      <img src="image3.jpg" alt="Image 3" onclick="openModal('image3.jpg', 'Description for Image 3')">
+    </div>
+
+    <!-- Scrollable Images -->
+    <div class="scrollable-images">
+      <img src="image4.jpg" alt="Image 4" onclick="openModal('image4.jpg', 'Description for Image 4')">
+      <!-- Small icon of the angel image -->
+      <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg" alt="Angel Image" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/angel_ref.jpg', 'Description for Angel Image')" style="height: 50px; max-width: 80px;">
+      <img src="image5.jpg" alt="Image 5" onclick="openModal('image5.jpg', 'Description for Image 5')">
+      <img src="image6.jpg" alt="Image 6" onclick="openModal('image6.jpg', 'Description for Image 6')">
+      <img src="image7.jpg" alt="Image 7" onclick="openModal('image7.jpg', 'Description for Image 7')">
+    </div>
+
+    <!-- Long Gap Section with Large Images -->
+    <div class="long-gap">
+      <img src="image8.jpg" alt="Large Image 8" onclick="openModal('image8.jpg', 'Description for Large Image 8')">
+    </div>
+
+    <!-- Contact Table -->
+    <div class="contact-table">
+      <h2>Contact Information</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>(123) 456-7890</td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>janesmith@example.com</td>
+            <td>(987) 654-3210</td>
+          </tr>
+          <tr>
+            <td>Alex Johnson</td>
+            <td>alexjohnson@example.com</td>
+            <td>(555) 123-4567</td>
+          </tr>
+          <tr>
+            <td>Emily Brown</td>
+            <td>emilybrown@example.com</td>
+            <td>(444) 789-0123</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Modal for images -->
   <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-      <img id="modalImage" src="" alt="Large Image">
+      <img id="modalImage" src="" alt="">
       <div class="modal-description" id="modalDescription"></div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Huge W Inc.</p>
+  </footer>
+
   <script>
     function openModal(imageSrc, description) {
-      // Set the modal content
+      document.getElementById("myModal").style.display = "block";
       document.getElementById("modalImage").src = imageSrc;
       document.getElementById("modalDescription").innerHTML = description;
-      
-      // Display the modal
-      document.getElementById("myModal").style.display = "block";
     }
 
     function closeModal() {
-      // Hide the modal
       document.getElementById("myModal").style.display = "none";
     }
   </script>
