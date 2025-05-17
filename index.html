@@ -14,29 +14,17 @@
       align-items: center;
       background-color: #f4f4f4;
     }
-    
-    /* Main Container */
-    .main-container {
-      width: 80%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding-top: 30px;
-    }
-
     /* Header section for images */
     .image-header {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      justify-items: center;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       width: 100%;
       height: 50vh; /* Half of the screen height */
       background-color: #e0e0e0;
-      padding: 20px 0;
     }
-
     .image-header img {
-      width: 80%;
+      width: 15%;
       height: auto;
       border-radius: 8px;
     }
@@ -44,45 +32,41 @@
     /* Scrollable section for more images */
     .scrollable-images {
       display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding: 20px 0;
+      overflow-x: scroll;
+      padding: 20px;
       width: 100%;
       background-color: #ffffff;
     }
-
     .scrollable-images img {
-      height: 150px;
-      object-fit: cover;
+      margin-right: 10px;
+      width: 20%;
+      height: auto;
       border-radius: 8px;
     }
 
     /* Contact table section */
     .contact-table {
       margin-top: 30px;
-      width: 100%;
+      width: 80%;
       background-color: #fff;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
     }
-
     th, td {
       padding: 12px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-
     th {
       background-color: #f2f2f2;
     }
 
-    /* Footer */
+    /* Footer (optional, for GitHub Pages link) */
     footer {
       text-align: center;
       margin-top: 50px;
@@ -91,104 +75,67 @@
       color: #fff;
       width: 100%;
     }
-
-    /* Make the page more responsive */
-    @media (max-width: 768px) {
-      .image-header {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      
-      .image-header img {
-        width: 90%;
-      }
-
-      .scrollable-images img {
-        height: 120px;
-        width: 150px;
-      }
-
-      .contact-table {
-        padding: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .image-header {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .image-header img {
-        width: 100%;
-      }
-
-      .scrollable-images img {
-        height: 100px;
-        width: 120px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <div class="main-container">
-    <!-- Image Header -->
-    <div class="image-header">
-      <img src="image1.jpg" alt="Image 1">
-      <img src="image2.jpg" alt="Image 2">
-      <img src="image3.jpg" alt="Image 3">
-    </div>
+  <!-- Image Header -->
+  <div class="image-header">
+    <img src="image1.jpg" alt="Image 1">
+    <img src="image2.jpg" alt="Image 2">
+    <img src="image3.jpg" alt="Image 3">
+    <img src="image4.jpg" alt="Image 4">
+    <img src="image5.jpg" alt="Image 5">
+    <img src="image6.jpg" alt="Image 6">
+  </div>
 
-    <!-- Scrollable Images -->
-    <div class="scrollable-images">
-      <img src="image4.jpg" alt="Image 4">
-      <img src="image5.jpg" alt="Image 5">
-      <img src="image6.jpg" alt="Image 6">
-      <img src="image7.jpg" alt="Image 7">
-    </div>
+  <!-- Scrollable Images -->
+  <div class="scrollable-images">
+    <img src="image7.jpg" alt="Image 7">
+    <img src="image8.jpg" alt="Image 8">
+    <img src="image9.jpg" alt="Image 9">
+    <img src="image10.jpg" alt="Image 10">
+  </div>
 
-    <!-- Contact Table -->
-    <div class="contact-table">
-      <h2>Contact Information</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>John Doe</td>
-            <td>johndoe@example.com</td>
-            <td>(123) 456-7890</td>
-          </tr>
-          <tr>
-            <td>Jane Smith</td>
-            <td>janesmith@example.com</td>
-            <td>(987) 654-3210</td>
-          </tr>
-          <tr>
-            <td>Alex Johnson</td>
-            <td>alexjohnson@example.com</td>
-            <td>(555) 123-4567</td>
-          </tr>
-          <tr>
-            <td>Emily Brown</td>
-            <td>emilybrown@example.com</td>
-            <td>(444) 789-0123</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Contact Table -->
+  <div class="contact-table">
+    <h2>Contact Information</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>johndoe@example.com</td>
+          <td>(123) 456-7890</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>janesmith@example.com</td>
+          <td>(987) 654-3210</td>
+        </tr>
+        <tr>
+          <td>Alex Johnson</td>
+          <td>alexjohnson@example.com</td>
+          <td>(555) 123-4567</td>
+        </tr>
+        <tr>
+          <td>Emily Brown</td>
+          <td>emilybrown@example.com</td>
+          <td>(444) 789-0123</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; Test for displaying art, Generated by AI
+    <p>&copy; 2025 Your Website - Hosted on GitHub Pages</p>
   </footer>
 
 </body>
