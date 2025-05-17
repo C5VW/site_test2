@@ -64,13 +64,13 @@
       padding: 20px 0;
       width: 100%;
       background-color: #111;
-      justify-content: flex-start; /* Align images to the left */
+      justify-content: flex-start;
     }
 
     .scrollable-images img {
-      height: 50px;  /* Icon size */
+      height: 50px;
       width: auto;
-      max-width: 80px; /* Icon size for image */
+      max-width: 80px;
       object-fit: cover;
       border-radius: 10px;
       transition: transform 0.3s ease;
@@ -82,7 +82,7 @@
     }
 
     .long-gap {
-      height: 500px; 
+      height: 500px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -92,7 +92,7 @@
     }
 
     .long-gap img {
-      width: 80%;  /* Adjust for responsiveness */
+      width: 80%;
       max-width: 600px;
       height: auto;
       object-fit: contain;
@@ -137,7 +137,7 @@
     }
 
     .modal {
-      display: none; 
+      display: none;
       position: fixed;
       z-index: 1;
       left: 0;
@@ -162,7 +162,8 @@
     }
 
     .modal-content img {
-      width: 60%; /* Adjust the image size */
+      max-width: 600px; /* This will set the max width of the modal image */
+      width: 100%;
       height: auto;
       border-radius: 10px;
       object-fit: contain;
@@ -207,16 +208,16 @@
       }
 
       .image-header img {
-        max-width: 90%; /* Make images slightly smaller on mobile */
+        max-width: 90%;
       }
 
       .scrollable-images img {
         height: 40px;
-        max-width: 60px; /* Slightly smaller icons */
+        max-width: 60px;
       }
 
       .long-gap img {
-        width: 90%;  /* Adjust width for mobile */
+        width: 90%;
         max-width: 500px;
       }
 
@@ -237,7 +238,7 @@
       }
 
       .contact-table table {
-        font-size: 14px; /* Adjust font size for small screens */
+        font-size: 14px;
       }
     }
 
@@ -255,7 +256,9 @@
 
     <!-- Scrollable Images -->
     <div class="scrollable-images">
-      <img src="image4.jpg" alt="Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg', 'Description for Image 4')">
+      <img src="image4.jpg" alt="Image 4" onclick="openModal('image4.jpg', 'Description for Image 4')">
+      <!-- Small icon of the angel image -->
+      <img src="https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg" alt="Angel Image" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg', 'Description for Angel Image')">
       <img src="image5.jpg" alt="Image 5" onclick="openModal('image5.jpg', 'Description for Image 5')">
       <img src="image6.jpg" alt="Image 6" onclick="openModal('image6.jpg', 'Description for Image 6')">
       <img src="image7.jpg" alt="Image 7" onclick="openModal('image7.jpg', 'Description for Image 7')">
@@ -263,7 +266,7 @@
 
     <!-- Long Gap Section with Large Images -->
     <div class="long-gap">
-      <img src="https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg" alt="Large Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/refs/heads/main/angel_ref.jpg', 'Description for Large Image 4')">
+      <img src="image8.jpg" alt="Large Image 8" onclick="openModal('image8.jpg', 'Description for Large Image 8')">
     </div>
 
     <!-- Contact Table -->
