@@ -18,7 +18,6 @@
       padding: 20px;
     }
 
-    /* Top Header or Banner */
     .header {
       height: 100px;
       background-color: #222;
@@ -26,7 +25,6 @@
       border-radius: 10px;
     }
 
-    /* Top Section with icons and main image */
     .top-section {
       display: flex;
       gap: 20px;
@@ -63,7 +61,11 @@
       border-radius: 10px;
     }
 
-    /* Second section with image 6, 7, 8 */
+    /* Spacer between sections */
+    .section-separator {
+      height: 40px;
+    }
+
     .bottom-gallery {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -89,7 +91,6 @@
       max-height: 500px;
     }
 
-    /* Contact Section */
     .contact-section {
       background-color: #222;
       padding: 20px;
@@ -118,29 +119,79 @@
       padding: 10px;
       background-color: #111;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-content {
+      margin: 5% auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      padding: 20px;
+      color: white;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .modal-description {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Header / Banner -->
-    <div class="header">
-      <!-- You can insert your logo or site title here -->
-    </div>
+    <div class="header"></div>
 
     <!-- Icons + Main Image -->
     <div class="top-section">
       <div class="icon-column">
-        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image1.jpg" alt="Image 1">
-        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image2.jpg" alt="Image 2">
-        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image3.jpg" alt="Image 3">
-        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image4.jpg" alt="Image 4">
+        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image1.jpg" alt="Image 1" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image1.jpg', 'Description for Image 1')">
+        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image2.jpg" alt="Image 2" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image2.jpg', 'Description for Image 2')">
+        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image3.jpg" alt="Image 3" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image3.jpg', 'Description for Image 3')">
+        <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image4.jpg" alt="Image 4" onclick="openModal('https://raw.githubusercontent.com/C5VW/site_test2/main/image4.jpg', 'Description for Image 4')">
       </div>
       <div class="main-image">
         <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image5.jpg" alt="Image 5">
       </div>
     </div>
 
-    <!-- Bottom Image Gallery -->
+    <!-- Spacer between 5 and 6 -->
+    <div class="section-separator"></div>
+
+    <!-- Bottom Gallery -->
     <div class="bottom-gallery">
       <div class="left-stack">
         <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image6.jpg" alt="Image 6">
@@ -150,6 +201,9 @@
         <img src="https://raw.githubusercontent.com/C5VW/site_test2/main/image8.jpg" alt="Image 8">
       </div>
     </div>
+
+    <!-- Spacer between 7,8 and contacts -->
+    <div class="section-separator"></div>
 
     <!-- Contact Table -->
     <div class="contact-section">
@@ -181,5 +235,33 @@
   <footer>
     <p>&copy; 2025 Your Portfolio. All rights reserved.</p>
   </footer>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Full Image">
+      <div class="modal-description" id="modalDescription"></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(imageSrc, description) {
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("modalDescription").innerText = description;
+      document.getElementById("imageModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("imageModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
 </body>
 </html>
